@@ -1,0 +1,9 @@
+name: sound_downloader
+description: A simple Dart script to download sound files.
+version: 1.0.0
+
+environment:
+  sdk: '>=2.19.0 <4.0.0'
+
+dependencies:
+  http: ^1.1.0

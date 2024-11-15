@@ -6,13 +6,6 @@
         <h1 class="text-2xl font-bold mb-4 text-green-900 text-center">
           Popi's Sound Board
         </h1>
-        <div>
-          <audio ref="player" :src="currentSound" controls class="hidden" />
-          <canvas ref="canvas" class="w-full"></canvas>
-          <div class="text-center text-green-900 font-bold mt-2">
-            {{ currentSoundLabel }}
-          </div>
-        </div>
       </div>
     </header>
 
@@ -25,7 +18,7 @@
           v-for="sound in sounds"
           :key="sound.id"
           @click="playSound(sound)"
-          class="aspect-square p-2 text-sm text-green-900 font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 bg-[url('@/assets/images/button.png')] bg-cover bg-center hover:brightness-110 transition-all"
+          class="aspect-square p-2 text-sm text-green-900 font-bold bg-[url('@/assets/images/button.png')] bg-cover bg-center hover:brightness-110 transition-all"
         >
           {{ sound.label }}
         </button>
@@ -36,7 +29,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useAVLine } from 'vue-audio-visual'
 
 // Define sound type
 type Sound = {
@@ -45,44 +37,70 @@ type Sound = {
   label: string
 }
 
-const player = ref<HTMLAudioElement | null>(null)
-const canvas = ref<HTMLCanvasElement | null>(null)
-const currentSound = ref('')
 const currentSoundLabel = ref(' ')
 
-// Initialize audio visualization
-useAVLine(player, canvas, {
-  canvHeight: 100,
-  canvWidth: window.innerWidth,
-  barColor: '#166534',
-  fftSize: 256,
-})
+const audioPlayer = ref<HTMLAudioElement | null>(null)
 
 const sounds: Sound[] = [
+  { id: 1, path: './src/assets/audio/bedtime.mp3', label: 'Bedtime' },
+  { id: 2, path: './src/assets/audio/bvcbvcb.mp3', label: 'BVC' },
   {
-    id: 1,
+    id: 3,
+    path: './src/assets/audio/collen-eyes-effect.mp3',
+    label: 'Collen Eyes',
+  },
+  { id: 4, path: './src/assets/audio/ding-sound-effect.mp3', label: 'Ding' },
+  {
+    id: 5,
+    path: './src/assets/audio/discord-leave.mp3',
+    label: 'Discord Leave',
+  },
+  {
+    id: 6,
     path: './src/assets/audio/discord-notification.mp3',
     label: 'Discord',
   },
-  { id: 2, path: './src/assets/audio/movie_1.mp3', label: 'Movie' },
-  { id: 3, path: './src/assets/audio/perfect-fart.mp3', label: 'Perfect Fart' },
+  { id: 7, path: './src/assets/audio/fart.mp3', label: 'Fart' },
+  { id: 8, path: './src/assets/audio/gta-v-notification.mp3', label: 'GTA V' },
   {
-    id: 4,
-    path: './src/assets/audio/snore-mimimimimimi.mp3',
-    label: 'Snore',
+    id: 9,
+    path: './src/assets/audio/james-brown-i-got-you.mp3',
+    label: 'James Brown',
+  },
+  { id: 10, path: './src/assets/audio/movie_1.mp3', label: 'Movie' },
+  {
+    id: 11,
+    path: './src/assets/audio/perfect-fart.mp3',
+    label: 'Perfect Fart',
   },
   {
-    id: 5,
+    id: 12,
+    path: './src/assets/audio/roblox-eating.mp3',
+    label: 'Roblox Eating',
+  },
+  {
+    id: 13,
+    path: './src/assets/audio/roblox-explosion.mp3',
+    label: 'Roblox Explosion',
+  },
+  { id: 14, path: './src/assets/audio/ryuko-i-got-this.mp3', label: 'Ryuko' },
+  { id: 15, path: './src/assets/audio/snore-mimimimimimi.mp3', label: 'Snore' },
+  {
+    id: 16,
     path: './src/assets/audio/wrong-answer-sound-effect.mp3',
     label: 'Wrong Answer',
   },
+  { id: 17, path: './src/assets/audio/yeet-sound-effect.mp3', label: 'Yeet' },
 ]
 
 const playSound = async (sound: Sound) => {
-  if (!player.value) return
-
-  player.value.src = sound.path
+  if (audioPlayer.value == null) {
+    audioPlayer.value = new Audio()
+  }
   currentSoundLabel.value = sound.label
-  await player.value.play()
+
+  audioPlayer.value.src = sound.path
+  audioPlayer.value.muted = false
+  await audioPlayer.value.play()
 }
 </script>

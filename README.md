@@ -37,3 +37,16 @@ npm run build
 ```sh
 npm run lint
 ```
+
+```
+// Récupération de toutes les requêtes réseau de la page via "performance.getEntries()"
+const mp3Files = performance.getEntries()
+    .filter(entry => entry.initiatorType === 'media' && entry.name.endsWith('.mp3'));
+
+// Téléchargement de chaque fichier mp3 trouvé
+mp3Files.forEach(file => {
+    const url = file.name;
+    const filename = url.split("/").pop(); // Extrait le nom du fichier à partir de l'URL
+    download(url, filename);
+});
+```
