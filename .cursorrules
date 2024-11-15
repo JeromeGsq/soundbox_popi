@@ -1,0 +1,77 @@
+Here's a Vue.js and TypeScript adaptation of the development guidelines you provided, including syntax, conventions, and specific Vue adjustments:
+
+---
+
+**Vue.js, TypeScript, and Pinia Development Guide**
+
+**Code Style and Structure**
+
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Favor modularization over code duplication; structure files logically.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure directories: components, subcomponents, composables, static content, types.
+
+**File and Naming Conventions**
+
+- Use lowercase with dashes for directories (e.g., `components/auth-wizard`).
+- Prefer named exports for composables, utilities, and helper functions.
+- For components, use PascalCase with a clear prefix/suffix where relevant (e.g., `AuthWizard.vue`).
+
+**TypeScript Usage**
+
+- Use TypeScript for all code; prefer `type` aliases over interfaces for consistency.
+- Avoid `enum`s; use constant maps instead.
+- Write functional components with `defineComponent` and Vue's Composition API.
+
+**Syntax and Formatting**
+
+- Avoid unnecessary curly braces in conditionals; use concise syntax for single statements.
+- Use the `<template>` tag for declarative HTML with `v-if`, `v-for`, and scoped slots.
+
+**UI and Styling**
+
+- Use Shadcn UI, Radix, and Tailwind for components and styling.
+- Implement responsive design with Tailwind CSS, following a mobile-first approach.
+
+**Performance Optimization**
+
+- Minimize `ref`, `watchEffect`, and `setState` where possible; favor server-side rendering (SSR).
+- Use Vue's `<Suspense>` component with fallback slots for loading states.
+- Use dynamic imports for non-critical components via `defineAsyncComponent`.
+- Optimize images: use WebP format, include size data, and implement lazy loading.
+
+**State Management and Querying**
+
+- Use Pinia for centralized state management and URL parameter state, following a modular approach.
+- For data models, use Prisma SDK and read from `.prisma` files.
+
+**Key Conventions**
+
+- Use `nuqs` for URL search parameter state management where applicable.
+- Optimize Web Vitals (LCP, CLS, FID).
+- Limit client-side API calls:
+  - Prefer SSR and server-side rendering via Vue's built-in SSR capabilities.
+  - Only access Web API in isolated, specific components.
+  - Avoid client-side data fetching or state management where possible.
+
+**Database Querying & Data Model Creation**
+
+- Use Prisma with valid PostgreSQL syntax, employing double quotes around table and column names (e.g., `SELECT * FROM "users"`).
+
+**Component Syntax**
+
+Use this syntax for components:
+
+```typescript
+import { defineComponent } from 'vue'
+
+export const MyComponent = defineComponent({
+  props: {
+    // Define props with types
+  },
+  setup(props) {
+    // Component logic here
+  },
+})
+```
