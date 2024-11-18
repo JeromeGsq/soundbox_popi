@@ -42,55 +42,55 @@ const currentSoundLabel = ref(' ')
 const audioPlayer = ref<HTMLAudioElement | null>(null)
 
 const sounds: Sound[] = [
-  { id: 1, path: './public/audio/bedtime.mp3', label: 'Bedtime' },
-  { id: 2, path: './public/audio/bvcbvcb.mp3', label: 'BVC' },
+  { id: 1, path: './audio/bedtime.mp3', label: 'Bedtime' },
+  { id: 2, path: './audio/bvcbvcb.mp3', label: 'BVC' },
   {
     id: 3,
-    path: './public/audio/collen-eyes-effect.mp3',
+    path: './audio/collen-eyes-effect.mp3',
     label: 'Collen Eyes',
   },
-  { id: 4, path: './public/audio/ding-sound-effect.mp3', label: 'Ding' },
+  { id: 4, path: './audio/ding-sound-effect.mp3', label: 'Ding' },
   {
     id: 5,
-    path: './public/audio/discord-leave.mp3',
+    path: './audio/discord-leave.mp3',
     label: 'Discord Leave',
   },
   {
     id: 6,
-    path: './public/audio/discord-notification.mp3',
+    path: './audio/discord-notification.mp3',
     label: 'Discord',
   },
-  { id: 7, path: './public/audio/fart.mp3', label: 'Fart' },
-  { id: 8, path: './public/audio/gta-v-notification.mp3', label: 'GTA V' },
+  { id: 7, path: './audio/fart.mp3', label: 'Fart' },
+  { id: 8, path: './audio/gta-v-notification.mp3', label: 'GTA V' },
   {
     id: 9,
-    path: './public/audio/james-brown-i-got-you.mp3',
+    path: './audio/james-brown-i-got-you.mp3',
     label: 'James Brown',
   },
-  { id: 10, path: './public/audio/movie_1.mp3', label: 'Movie' },
+  { id: 10, path: './audio/movie_1.mp3', label: 'Movie' },
   {
     id: 11,
-    path: './public/audio/perfect-fart.mp3',
+    path: './audio/perfect-fart.mp3',
     label: 'Perfect Fart',
   },
   {
     id: 12,
-    path: './public/audio/roblox-eating.mp3',
+    path: './audio/roblox-eating.mp3',
     label: 'Roblox Eating',
   },
   {
     id: 13,
-    path: './public/audio/roblox-explosion.mp3',
+    path: './audio/roblox-explosion.mp3',
     label: 'Roblox Explosion',
   },
-  { id: 14, path: './public/audio/ryuko-i-got-this.mp3', label: 'Ryuko' },
-  { id: 15, path: './public/audio/snore-mimimimimimi.mp3', label: 'Snore' },
+  { id: 14, path: './audio/ryuko-i-got-this.mp3', label: 'Ryuko' },
+  { id: 15, path: './audio/snore-mimimimimimi.mp3', label: 'Snore' },
   {
     id: 16,
-    path: './public/audio/wrong-answer-sound-effect.mp3',
+    path: './audio/wrong-answer-sound-effect.mp3',
     label: 'Wrong Answer',
   },
-  { id: 17, path: './public/audio/yeet-sound-effect.mp3', label: 'Yeet' },
+  { id: 17, path: './audio/yeet-sound-effect.mp3', label: 'Yeet' },
 ]
 
 const playSound = async (sound: Sound) => {
